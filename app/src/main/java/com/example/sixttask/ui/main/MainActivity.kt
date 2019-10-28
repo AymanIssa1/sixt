@@ -8,7 +8,6 @@ import com.example.sixttask.ui.BaseActivity
 import com.example.sixttask.ui.carsList.CarsListFragment
 import com.example.sixttask.ui.carsMap.CarsMapFragment
 import com.zplesac.connectionbuddy.models.ConnectivityEvent
-import com.zplesac.connectionbuddy.models.ConnectivityState
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,8 +26,9 @@ class MainActivity : BaseActivity() {
                 it.isLoading -> {
                     progress_bar.visibility = View.VISIBLE
                     error_text_view.visibility = View.GONE
-                    cars_tab_layout.visibility = View.GONE
-                    cars_view_pager.visibility = View.GONE
+                    // to solve blinking issue
+//                    cars_tab_layout.visibility = View.GONE
+//                    cars_view_pager.visibility = View.GONE
                 }
                 it.isSuccess -> {
                     setViewPager()
@@ -46,8 +46,6 @@ class MainActivity : BaseActivity() {
                 }
             }
         })
-
-        model.getCars()
     }
 
     private fun setViewPager() {
@@ -67,8 +65,6 @@ class MainActivity : BaseActivity() {
 
     override fun onConnectionChange(event: ConnectivityEvent) {
         super.onConnectionChange(event)
-        if (event.state.value == ConnectivityState.CONNECTED) {
-            model.getCars()
-        }
+        model.getCars()
     }
 }
