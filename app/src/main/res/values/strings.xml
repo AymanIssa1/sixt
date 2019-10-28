@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SixtTask</string>
+    <string name="action_settings">Settings</string>
+    <string name="cars">Cars</string>
+    <string name="map">Map</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="please_check_your_internet_connectivity">Please check your internet connectivity.</string>
+</resources>
